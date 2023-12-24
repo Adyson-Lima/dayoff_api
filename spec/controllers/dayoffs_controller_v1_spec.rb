@@ -27,6 +27,15 @@ RSpec.describe Api::V1::DayoffsController, type: :controller do
       expect(response).to have_http_status(201)
     end
   end
+
+  describe 'PATCH /api/v1/dayoffs/id' do
+    it 'Consegue atualizar um dayoff e retornar status 200?' do
+      dayoff = Dayoff.last
+      patch :update, params: {dayoff: {day: 'Natal', description: 'dia de presentes'}, id: dayoff.id}
+      expect(response.body).to include_json(day: 'Natal')
+      expect(response).to have_http_status(200)
+    end
+  end
   
 
 end
