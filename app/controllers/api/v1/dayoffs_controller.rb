@@ -1,10 +1,14 @@
 class Api::V1::DayoffsController < ApplicationController
 
-  before_action :set_dayoff, only: %i[] # show update destroy
+  before_action :set_dayoff, only: %i[show] # show update destroy
 
   def index
     @dayoffs = Dayoff.all 
     render json: @dayoffs
+  end
+
+  def show
+    render json: @dayoff
   end
 
 private
