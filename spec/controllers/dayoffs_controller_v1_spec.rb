@@ -19,6 +19,14 @@ RSpec.describe Api::V1::DayoffsController, type: :controller do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'POST /api/v1/dayoffs' do
+    it 'Consegue criar um dayoff e retornar status 201?' do
+      post :create, params: {dayoff: {day: 'Independencia', description: '7 de setembro'}, format: :json}
+      expect(response.body).to include_json(day: 'Independencia')
+      expect(response).to have_http_status(201)
+    end
+  end
   
 
 end
