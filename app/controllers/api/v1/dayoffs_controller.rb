@@ -1,6 +1,6 @@
 class Api::V1::DayoffsController < ApplicationController
 
-  before_action :set_dayoff, only: %i[show] # show update destroy
+  before_action :set_dayoff, only: %i[show update] # show update destroy
 
   def index
     @dayoffs = Dayoff.all 
@@ -15,6 +15,14 @@ class Api::V1::DayoffsController < ApplicationController
     @dayoff = Dayoff.new(dayoff_params)
     if @dayoff.save
       render json: @dayoff, status: :created, location: api_v1_dayoff_url(@dayoff)
+    else
+      render json: @dayoff.errors, status: :unprocessable_entity
+    end
+  end
+
+  def update
+    if @dayoff.update(dayoff_params)
+      render json: @dayoff
     else
       render json: @dayoff.errors, status: :unprocessable_entity
     end
