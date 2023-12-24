@@ -11,6 +11,15 @@ class Api::V1::DayoffsController < ApplicationController
     render json: @dayoff
   end
 
+  def create
+    @dayoff = Dayoff.new(dayoff_params)
+    if @dayoff.save
+      render json: @dayoff, status: :created, location: api_v1_dayoff_url(@dayoff)
+    else
+      render json: @dayoff.errors, status: :unprocessable_entity
+    end
+  end
+
 private
 
 def set_dayoff
