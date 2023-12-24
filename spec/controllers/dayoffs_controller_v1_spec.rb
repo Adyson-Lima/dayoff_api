@@ -36,6 +36,15 @@ RSpec.describe Api::V1::DayoffsController, type: :controller do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'DELETE /api/v1/dayoffs/id' do
+    it 'Consegue excluir um dayoff e retornar status 204?' do
+      dayoff = Dayoff.last
+      delete :destroy, params: {id: dayoff.id}
+      expect(Dayoff.all).not_to include(dayoff)
+      expect(response).to have_http_status(204)
+    end
+  end
   
 
 end
