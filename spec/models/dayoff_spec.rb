@@ -7,7 +7,7 @@ RSpec.describe Dayoff, type: :model do
   describe 'testes de preenchimento do model Dayoff' do
 
     it 'day consegue ser preenchido?' do
-      @dayoff.day = ''
+      @dayoff.day = 'Natal'
       expect(@dayoff.day).to eq('Natal')
     end
 
