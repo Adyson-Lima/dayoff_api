@@ -21,8 +21,8 @@ RSpec.describe Dayoff, type: :model do
   describe 'testes de validação do model Dayoff' do
 
     it 'objeto dayoff valido com campos obrigatorios preenchidos?' do
-      @dayoff.day = ''
-      @dayoff.description = ''
+      @dayoff.day = 'Ano Novo'
+      @dayoff.description = 'dia de fogos'
       expect(@dayoff).to be_valid
     end
 
