@@ -26,6 +26,11 @@ RSpec.describe Dayoff, type: :model do
       expect(@dayoff).to be_valid
     end
 
+    it 'objeto dayoff invalido com campos obrigatorios não preenchidos?' do
+      dayoff = Dayoff.new
+      expect(dayoff).to be_valid
+    end
+
   end
   
 end
