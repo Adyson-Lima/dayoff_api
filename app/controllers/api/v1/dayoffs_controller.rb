@@ -1,6 +1,6 @@
 class Api::V1::DayoffsController < ApplicationController
 
-  before_action :set_dayoff, only: %i[show update] # show update destroy
+  before_action :set_dayoff, only: %i[show update destroy] # show update destroy
 
   def index
     @dayoffs = Dayoff.all 
@@ -26,6 +26,10 @@ class Api::V1::DayoffsController < ApplicationController
     else
       render json: @dayoff.errors, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @dayoff.destroy!
   end
 
 private
