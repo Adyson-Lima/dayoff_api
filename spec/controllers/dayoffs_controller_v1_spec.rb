@@ -11,6 +11,14 @@ RSpec.describe Api::V1::DayoffsController, type: :controller do
       expect(response).to have_http_status(200)
     end
   end
+
+  describe 'GET /api/v1/dayoffs/id' do
+    it 'Consegue listar um dayoff especifico e retornar status 200?' do
+      get :show, params: {id: @dayoff.id}
+      expect(response.body).to include_json(day: 'Pascoa')
+      expect(response).to have_http_status(200)
+    end
+  end
   
 
 end
